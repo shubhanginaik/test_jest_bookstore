@@ -9,7 +9,7 @@ describe('Testing Constructor', ()=>{
     });
 });
 describe('Tests for getById(id', ()=>{
-    const storage = new BookStorage(books);
+    const book = new BookStorage(books);
 
     test('Test 1: getById(1)', ()=>{
         const expected=[{
@@ -28,33 +28,33 @@ describe('Tests for getById(id', ()=>{
               }
             ]
           }];
-          expect(storage.getById(1)).toEqual(expected);
+          expect(book.getById(1)).toEqual(expected);
     });
 
     test('Test 2: with wrong Id: 4',()=>{
-        expect(storage.getById(4)).toBeNull();
+        expect(book.getById(4)).toBeNull();
     });
 
     test('Test 3: with wrong parameter type',()=>{
-        expect(storage.getById('2')).toBeNull();
+        expect(book.getById('2')).toBeNull();
     })
 
     test('Test 4: with no Id', ()=>{
-        expect(()=>storage.getById()).toThrow('parameter missing')
+        expect(()=>book.getById()).toThrow('parameter missing')
     });// end of getById test cases
 
     describe('Test cases for getAllIdsByName(value)', ()=>{
-        const storage= new BookStorage(books);
+        const book= new BookStorage(books);
         test('Test 1: with valid name Databases - The rise and fall', ()=>{
-            expect(storage.getAllIdsByName('Databases - The rise and fall')).toEqual([2]);
+            expect(book.getAllIdsByName('Databases - The rise and fall')).toEqual([2]);
         });
 
         test('Test 2: with wrong book name', ()=>{
-            expect(storage.getAllIdsByName('Advanced Java')).toEqual([]);
+            expect(book.getAllIdsByName('Advanced Java')).toEqual([]);
         });
 
         test('Test 3: with no book name', ()=>{
-            expect(storage.getAllIdsByName()).toEqual([]);
+            expect(book.getAllIdsByName()).toEqual([]);
         }); // end of getAllIdsByName test cases
     })
 })
